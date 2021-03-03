@@ -1,3 +1,0 @@
-500.0 $ has been Deposited in Account Number 111
-100.0 $ has been Withdrawn from Account Number 222
-200.0 $ has been Transfered from Account Number 111 to Account Number 222

@@ -1,5 +1,4 @@
 package interfaces;
-
 import java.lang.*;
 import classes.*;
 

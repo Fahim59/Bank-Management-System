@@ -87,8 +87,13 @@ public class Main{
 						System.out.print("Enter Employee ID: ");
 						int id2 = sc.nextInt();
 						
-						Employee e2 = b.getEmployee(id2);
-						b.removeEmployee(e2);
+						try{
+						    Employee e2 = b.getEmployee(id2);
+						    b.removeEmployee(e2);
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nEmployee doesnot exist...");
+			            }
 						
 						break;
 						
@@ -112,12 +117,29 @@ public class Main{
 			                break;
 		                }
 						
+						Employee e3;
+						
 						System.out.print("Enter Employee ID: ");
 							int id3 = sc.nextInt();
 							
-							Employee e3 = b.getEmployee(id3);
+						try{
+							e3 = b.getEmployee(id3);
 							
-						if(e3 != null){
+							if(e3 != null){
+							
+							System.out.println("\nEmployee ID: "+e3.getEmpId());
+							System.out.println("Employee Name: "+e3.getName());
+							System.out.println("Employee Salary: "+e3.getSalary());
+						    }
+						    else{
+							System.out.println("Employee Does Not Exist...");
+						    }
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nEmployee doesnot exist...");
+			            }
+							
+						/*if(e3 != null){
 							
 							System.out.println("\nEmployee ID: "+e3.getEmpId());
 							System.out.println("Employee Name: "+e3.getName());
@@ -125,7 +147,7 @@ public class Main{
 						}
 						else{
 							System.out.println("Employee Does Not Exist...");
-						}
+						}*/
 						break;
 						
 						case 5:
@@ -190,10 +212,14 @@ public class Main{
 						
 					    System.out.print("Enter Customer ID: ");
 					    int id2 = sc.nextInt();
-						
-					    Customer c2 = b.getCustomer(id2);
-						
-						b.removeCustomer(c2);
+					    
+						try{
+					        Customer c2 = b.getCustomer(id2);
+						    b.removeCustomer(c2);
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer doesnot exist...");
+			            }
 						
 						break;
 						
@@ -216,12 +242,29 @@ public class Main{
 			                break;
 		                }
 						
+						Customer c3;
+						
 					    System.out.print("Enter Customer ID: ");
 					    int id3 = sc.nextInt();
+					    
+						try{
+					        c3 = b.getCustomer(id3);
+							
+							if(c3 != null){
 					
-					    Customer c3 = b.getCustomer(id3);
+					        System.out.println("\nCustomer NID: "+c3.getNid());
+					        System.out.println("Customer Name: "+c3.getName());
+						    c3.showAllAccounts();
+					        }
+					        else{
+					        System.out.println("Customer Does Not Exist...");
+					        }
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer doesnot exist...");
+			            }
 					
-					    if(c3 != null){
+					    /*if(c3 != null){
 					
 					        System.out.println("\nCustomer NID: "+c3.getNid());
 					        System.out.println("Customer Name: "+c3.getName());
@@ -229,7 +272,7 @@ public class Main{
 					    }
 					    else{
 					        System.out.println("Customer Does Not Exist...");
-					    }
+					    }*/
 						break;
 						
 						case 5:
@@ -268,7 +311,7 @@ public class Main{
 			                break;
 		                }
 						
-					    System.out.print("How many FoodItems you want to insert? " );
+					    System.out.print("How many Accounts you want to insert? " );
 					    int n = sc.nextInt();
 						
 					    for(int i=0;i<n;i++){
@@ -333,7 +376,12 @@ public class Main{
 							System.out.print("Enter Customer NID: ");
 							int nid1 = sc.nextInt();
 							
-							b.getCustomer(nid1).insertAccount(a1);
+							try{
+							    b.getCustomer(nid1).insertAccount(a1);
+							}
+							catch(NullPointerException e){
+				            System.out.println("\nCustomer doesnot exist...");
+			                }
 						}
 					}
 						break;
@@ -352,8 +400,12 @@ public class Main{
 					    System.out.print("Enter Account Number: ");
 					    int id2 = sc.nextInt();
 						
-						b.getCustomer(nid2).removeAccount(b.getCustomer(nid2).getAccount(id2));
-						
+						try{
+						    b.getCustomer(nid2).removeAccount(b.getCustomer(nid2).getAccount(id2));
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer doesnot exist...");
+			            }
 						break;
 						
 						case 3:
@@ -367,8 +419,12 @@ public class Main{
 						System.out.print("Enter Customer NID: ");
 						int id3 = sc.nextInt();
 						
-						b.getCustomer(id3).showAllAccounts();
-						
+						try{
+						    b.getCustomer(id3).showAllAccounts();
+						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer doesnot exist...");
+			            }
 						break;
 						
 						case 4:
@@ -379,16 +435,23 @@ public class Main{
 			                break;
 						}
 						
+						Account a2;
+						
 						System.out.print("Enter Customer NID: ");
 						int nid3 = sc.nextInt();
 						System.out.print("Enter Account Number: ");
 						int id4 = sc.nextInt();
 						
-						Account a2 = b.getCustomer(nid3).getAccount(id4);
+						try{
+						    a2 = b.getCustomer(nid3).getAccount(id4);
 						
-						if(a2 != null){
-							a2.showInfo();
+						    if(a2 != null){
+							    a2.showInfo();
+						    }
 						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer/Account doesnot exist...");
+			            }
 						break;
 						
 						case 5:
@@ -406,7 +469,7 @@ public class Main{
 				
 				case 4:
 				
-				System.out.println("\t*****FoodItem Quantity Add-Sell*****");
+				System.out.println("\t*****Transactions*****");
 				System.out.println("\t------------------------------------");
 				System.out.println("1. Deposit Money");
 		        System.out.println("2. Withdraw Money");
@@ -423,6 +486,11 @@ public class Main{
 						case 1:
 						System.out.println("\tDeposit Money");
 						
+						if(b.totalCustomer==0){
+			                System.out.println("There are no Accounts in the System, Add an Account First...\n\n");
+			                break;
+		                }
+						
 						System.out.print("Enter Customer NID: ");
 						int nid1 = sc.nextInt();
 						
@@ -433,14 +501,27 @@ public class Main{
 						double d1 = sc.nextDouble();
 						
 						if(d1>0){
-							
-							td.writeInFile(+d1+" $ has been Deposited in Account Number "+ an1);
-							b.getCustomer(nid1).getAccount(an1).deposit(d1);
+						
+                            try{
+                                b.getCustomer(nid1).getAccount(an1).deposit(d1);							
+						        td.writeInFile(+d1+" $ has been Deposited in Account Number "+ an1);
+						    }
+						    catch(NullPointerException e){
+				                System.out.println("\nCustomer/Account doesnot exist...");
+			                }
 						}
+					    else{
+						    System.out.println("\nCan Not Deposit...");
+					    }
 						break;
 						
 						case 2:
 						System.out.println("\tWithdraw Money");
+						
+						if(b.totalCustomer==0){
+			                System.out.println("There are no Accounts in the System, Add an Account First...\n\n");
+			                break;
+		                }
 						
 						System.out.print("Enter Customer NID: ");
 						int nid2 = sc.nextInt();
@@ -451,15 +532,30 @@ public class Main{
 						System.out.print("Enter Withdrawal Amount: ");
 						double d2 = sc.nextDouble();
 						
-						if(d2>0 && d2<= b.getCustomer(nid2).getAccount(an2).getBalance()){
+						try{
+							if(d2>0 && d2 <= b.getCustomer(nid2).getAccount(an2).getBalance()){
 							
-							td.writeInFile(+d2+" $ has been Withdrawn from Account Number "+ an2);
-							b.getCustomer(nid2).getAccount(an2).withdraw(d2);
+						        b.getCustomer(nid2).getAccount(an2).withdraw(d2);
+						        td.writeInFile(+d2+" $ has been Withdrawn from Account Number "+ an2);
+							}
 						}
+						catch(NullPointerException e){
+				            System.out.println("\nCustomer/Account doesnot exist...");
+			            }
+						
 						break;
 						
 						case 3:
 						System.out.println("\t***Transfer Money***");
+						
+						if(b.totalCustomer==0){
+			            System.out.println("There are no Accounts in the System...\n");
+			            break;
+		                }
+					    else if(b.totalCustomer==1){
+						System.out.println("There are not enough Accounts in the System, Add one more Account for transfer...\n");
+			            break;
+		                }
 						
 						System.out.print("Enter From Customer NID: ");
 						int fromNid = sc.nextInt();
@@ -475,17 +571,24 @@ public class Main{
 						System.out.print("Enter To Account Number: ");
 						int toAN = sc.nextInt();
 						
-						if(d3>0 && d3 <= b.getCustomer(fromNid).getAccount(fromAN).getBalance()){
-							
-							b.getCustomer(fromNid).getAccount(fromAN).transfer(b.getCustomer(toNid).getAccount(toAN), d3);
-							td.writeInFile(+d3+" $ has been Transfered from Account Number "+ fromAN+" to Account Number "+toAN);
+                        try{						
+						    b.getCustomer(fromNid).getAccount(fromAN).transfer(b.getCustomer(toNid).getAccount(toAN), d3);
+						    td.writeInFile(+d3+" $ has been Transfered from Account Number "+ fromAN+" to Account Number "+toAN);
 						}
+						catch(NullPointerException e){
+				        System.out.println("\nCustomer/s or Account/s doesnot exist...");	
+			            }
 						break;
 						
 						case 4:
 						System.out.println("\t***Showing Transactions***");
-						td.readFromFile();
 						
+						try{
+						    td.readFromFile();
+						}
+						catch(NullPointerException e){
+				        System.out.println("File is missing, create and write in it first...");	
+			            }
 						break;
 						
 						case 5:

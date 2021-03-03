@@ -88,7 +88,6 @@ public class Customer implements AccountOperations{
 			
 			if(accounts[i] != null){
 			
-			    //if(accounts[i].getAccountNumber().equals(accountNumber)){
 				if(accounts[i].getAccountNumber()==accountNumber){
 					
 					a = accounts[i];
